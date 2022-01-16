@@ -9,7 +9,7 @@ void reductionWithCudaImproved(float* result, const float* input);
 __global__ void reductionKernelImproved(float* result, const float* input);
 void reductionCPU(float* result, const float* input);
 
-#define SIZE 1000000
+#define SIZE 10000000
 #define TILE 32
 #define ILP 8
 #define BLOCK_X_IMPR (TILE / ILP)
@@ -88,7 +88,7 @@ void reductionWithCudaImproved(float* result, const float* input)
 
     cudaEventElapsedTime(&elapsed, start, stop);
 
-    printf("GPU Time (improved): %f ms\n", elapsed);
+    printf("GPU: %f ms\n", elapsed);
 
     cudaDeviceSynchronize();
 
@@ -126,7 +126,7 @@ int main()
 
     std::chrono::duration<double> diff = end - start;
     cpuTime = (diff.count() * 1000);
-    printf("CPU Time: %f ms\n", cpuTime);
+    printf("CPU: %f ms\n", cpuTime);
 
     reductionWithCudaImproved(&resultGPU, input);
 
