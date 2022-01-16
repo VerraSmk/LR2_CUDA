@@ -130,10 +130,5 @@ int main()
 
     reductionWithCudaImproved(&resultGPU, input);
 
-    if (resultCPU != resultGPU)
-        printf("CPU result does not match GPU result \n\n");
-    else
-        printf("CPU result matches GPU result\n\n");
-
     return 0;
 }
